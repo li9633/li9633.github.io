@@ -1,1 +1,0 @@
-import{_ as e,c,o as t}from"./index-8rfDzR_F.js";const o={},n={class:"container"};function r(s,a){return t(),c("div",n," 这是文章页这是文章页这是文章页这是文章页这是文章页这是文章页这是文章页这是文章页 ")}const i=e(o,[["render",r]]);export{i as default};
