@@ -1,17 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
-  history: createWebHistory(),
-  base: '/',
+  history: createWebHistory('/'),
+  // history: createWebHashHistory(),
   routes: [
     {
       path: '/',
-      name: 'HomePage',
       redirect: '/home',
       component: () => import('@/IndexPage.vue'),
       children: [
         {
           path: '/home',
+          name: 'HomePage',
           meta: {
             title: '首页',
           },
