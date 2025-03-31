@@ -1,10 +1,9 @@
 <template>
-  <div>
-    你好
-  </div>
+  <router-view > </router-view>
 </template>
 
 <script>
+
 
 </script>
 
