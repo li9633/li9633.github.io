@@ -4,7 +4,7 @@
             <div class="middle-context-item" v-for="(item) in itemList" :key="item">
                 <div class="header color-mix">
                     <img v-if="item.icon" :src="item.icon" alt="">
-                    <img v-else src="/src/assets/img/default.svg" alt="">
+                    <img v-else src="/img/default.svg" alt="">
                     <span>{{ item.name }}</span>
                 </div>
                 <hr>

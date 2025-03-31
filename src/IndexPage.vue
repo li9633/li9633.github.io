@@ -16,9 +16,9 @@ export default {
         return {
             actionItem: [
                 {
-                    icon: '/src/assets/img/search.svg',
+                    icon: '/img/search.svg',
                     title: null,
-                    url: '/'
+                    url: null
                 },
                 {
                     icon: null,

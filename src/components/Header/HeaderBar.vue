@@ -2,7 +2,7 @@
     <div class="font-mix">
         <div class="header-bar">
             <div class="left-item" @click="goHomePage()">
-                <img src="/src/assets/img/default.svg" alt="">
+                <img src="/img/default.svg" alt="">
             </div>
             <div class="middle-item">
                 <p>{{ getPageMetaTitle }}</p>
