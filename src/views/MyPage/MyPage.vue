@@ -1,14 +1,13 @@
 <template>
-    <div class="container">
-        这是我的页面
-    </div>
+  <div class="container">
+    <HeaderTitle>
+      <template #primary> 个人中心 </template>
+    </HeaderTitle>
+  </div>
 </template>
 
-<script>
-    
+<script setup>
+import HeaderTitle from '@/components/Header/HeaderTitle.vue'
 </script>
 
-<style scoped>
-    
-
-</style>
+<style scoped></style>

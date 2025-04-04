@@ -15,7 +15,9 @@
 .font-mix {
   font-family: FontMixer;
   font-variant-ligatures: contextual;
-  font-feature-settings: "calt" 1, "liga" 1;
+  font-feature-settings:
+    'calt' 1,
+    'liga' 1;
   letter-spacing: -0.02em;
   word-spacing: -0.08em;
 }
