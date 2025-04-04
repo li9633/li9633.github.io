@@ -18,6 +18,9 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Add CNAME file
+        run: echo "xindev.com" > ./dist/CNAME
+
       # copy 404 page to enable vue history mode
       - name: Create 404 page
         run: cp ./dist/index.html ./dist/404.html
