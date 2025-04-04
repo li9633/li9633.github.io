@@ -1,0 +1,1 @@
+import{H as t}from"./HeaderTitle-CmvGYLXh.js";import{f as r,l as a,w as o,b as s,k as n}from"./index-BpeJsr4k.js";const c={class:"container"},p={__name:"MorePage",setup(i){return(l,e)=>(s(),r("div",c,[a(t,null,{primary:o(()=>e[0]||(e[0]=[n(" 更多信息 ")])),_:1})]))}};export{p as default};

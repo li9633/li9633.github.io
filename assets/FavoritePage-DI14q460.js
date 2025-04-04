@@ -1,0 +1,1 @@
+import{H as t}from"./HeaderTitle-CmvGYLXh.js";import{f as a,l as r,w as o,b as s,k as n}from"./index-BpeJsr4k.js";const i={class:"container"},p={__name:"FavoritePage",setup(c){return(l,e)=>(s(),a("div",i,[r(t,null,{primary:o(()=>e[0]||(e[0]=[n(" 我的收藏 ")])),_:1})]))}};export{p as default};
