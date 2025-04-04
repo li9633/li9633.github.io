@@ -1,14 +1,13 @@
 <template>
-    <div class="container">
-        关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们关于我们
-    </div>
+  <div class="container">
+    <HeaderTitle>
+      <template #primary> 关于我们 </template>
+    </HeaderTitle>
+  </div>
 </template>
 
-<script>
-    
+<script setup>
+import HeaderTitle from '@/components/Header/HeaderTitle.vue'
 </script>
 
-<style scoped>
-    
-
-</style>
+<style scoped></style>
