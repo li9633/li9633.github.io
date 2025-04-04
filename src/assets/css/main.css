@@ -8,7 +8,7 @@ body {
 }
 
 .color-mix {
-  background: linear-gradient(135deg, #63b3ed 0%, #48bb78 100%);
+  background: linear-gradient(135deg, #74c2f9 0%, #63ce8f 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
