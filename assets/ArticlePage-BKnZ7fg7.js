@@ -1,0 +1,1 @@
+import{c as o,b as t,w as a,o as s,e as i}from"./index-CspVYnNq.js";import{E as n}from"./el-divider-DuvhwTmw.js";import{H as c}from"./HeaderTitle-rj_Y7kY0.js";const _={class:"container"},u={__name:"ArticlePage",setup(l){return(m,e)=>{const r=n;return s(),o("div",_,[t(c,null,{primary:a(()=>e[0]||(e[0]=[i(" 文章列表 ")])),_:1}),t(r)])}}};export{u as default};

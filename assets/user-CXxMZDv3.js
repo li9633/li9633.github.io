@@ -1,1 +1,0 @@
-import{q as u,r as s}from"./index-BpeJsr4k.js";const a=u("user",()=>{const r=s(""),t=s({username:""});function n(e){t.value=e}function o(e){r.value=e.toString()}return{token:r,userInfo:t,setUserInfo:n,setToken:o}},{persist:!0});export{a as u};

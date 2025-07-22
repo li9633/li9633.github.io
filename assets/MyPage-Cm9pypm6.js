@@ -1,0 +1,1 @@
+import{H as t}from"./HeaderTitle-rj_Y7kY0.js";import{c as a,b as r,w as o,o as s,e as n}from"./index-CspVYnNq.js";const c={class:"container"},p={__name:"MyPage",setup(i){return(_,e)=>(s(),a("div",c,[r(t,null,{primary:o(()=>e[0]||(e[0]=[n(" 个人中心 ")])),_:1})]))}};export{p as default};

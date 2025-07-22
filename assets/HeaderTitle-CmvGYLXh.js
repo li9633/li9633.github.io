@@ -1,1 +1,0 @@
-import{_ as t,f as n,d as s,m as o,b as a}from"./index-BpeJsr4k.js";const c={},r={class:"container"},d={class:"title font-mix color-mix"},i={class:"title font-mix"};function _(e,l){return a(),n("div",r,[s("h1",d,[o(e.$slots,"primary",{},void 0)]),s("h1",i,[o(e.$slots,"secondary",{},void 0)])])}const m=t(c,[["render",_],["__scopeId","data-v-a56a3803"]]);export{m as H};

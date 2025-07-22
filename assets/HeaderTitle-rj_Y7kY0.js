@@ -1,0 +1,1 @@
+import{_ as o,c as a,a as s,am as t,o as n}from"./index-CspVYnNq.js";const c={},r={class:"container"},i={class:"title font-mix color-mix"},d={class:"title font-mix"};function _(e,l){return n(),a("div",r,[s("h1",i,[t(e.$slots,"primary",{},void 0,!0)]),s("h1",d,[t(e.$slots,"secondary",{},void 0,!0)])])}const m=o(c,[["render",_],["__scopeId","data-v-21a2266b"]]);export{m as H};
