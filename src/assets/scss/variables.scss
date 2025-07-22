@@ -1,0 +1,13 @@
+:root {
+  --page-max-width: 1200px;
+  --card-radius: 12px;
+  --transition-duration: 0.3s;
+
+  // 布局变量
+  $content-padding: 2rem;
+  $mobile-padding: 1rem;
+  $content-bg: rgba(255, 255, 255, 0.92);
+  $content-radius: 15px;
+  $content-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  $max-content-width: 1200px;
+}

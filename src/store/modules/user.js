@@ -1,25 +1,29 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-export const useUserStore = defineStore('user', () => {
+export const useUserStore = defineStore(
+  'user',
+  () => {
     const token = ref('')
     const userInfo = ref({
-        username: '',
+      username: ''
     })
 
     function setUserInfo(obj) {
-        userInfo.value = obj
+      userInfo.value = obj
     }
 
     function setToken(data) {
-        token.value = data.toString()
+      token.value = data.toString()
     }
 
     return {
-        token,
-        userInfo,
-        setUserInfo,
-        setToken
+      token,
+      userInfo,
+      setUserInfo,
+      setToken
     }
-}, {
+  },
+  {
     persist: true
-})
+  }
+)
