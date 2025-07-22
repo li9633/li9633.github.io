@@ -1,82 +1,161 @@
 <template>
-  <div class="container font-mix">
-    <div class="title">
-      <slot name="title"></slot>
+  <el-card class="detail-card" shadow="hover">
+    <div class="card-content">
+      <!-- 标题区域 -->
+      <div v-if="hasSlot('title')" class="title-section">
+        <el-text class="title" tag="b" size="large">
+          <slot name="title"></slot>
+        </el-text>
+      </div>
+
+      <!-- 内容区域 -->
+      <div v-if="hasSlot('content')" class="content-section">
+        <el-text class="content">
+          <slot name="content"></slot>
+        </el-text>
+      </div>
+
+      <!-- 操作区域 -->
+      <div v-if="hasSlot('action')" class="action-section">
+        <slot name="action"></slot>
+      </div>
+
+      <!-- 页脚区域 -->
+      <div v-if="hasSlot('footer')" class="footer-section">
+        <slot name="footer"></slot>
+      </div>
+
+      <!-- 其他信息区域 -->
+      <div v-if="hasOtherSlots" class="meta-section">
+        <div v-if="hasSlot('copyright')" class="meta-item">
+          <el-text class="copyright-symbol" size="small">©</el-text>
+          <el-text size="small"
+            ><slot name="copyright"></slot
+          ></el-text>
+        </div>
+        <div v-if="hasSlot('author')" class="meta-item">
+          <el-icon><User /></el-icon>
+          <el-text size="small"><slot name="author"></slot></el-text>
+        </div>
+        <div v-if="hasSlot('license')" class="meta-item">
+          <el-icon><Document /></el-icon>
+          <el-text size="small"><slot name="license"></slot></el-text>
+        </div>
+        <div v-if="hasSlot('version')" class="meta-item">
+          <el-icon><Ticket /></el-icon>
+          <el-text size="small"><slot name="version"></slot></el-text>
+        </div>
+      </div>
     </div>
-    <div class="content">
-      <slot name="content"></slot>
-    </div>
-    <div class="action">
-      <slot name="action"></slot>
-    </div>
-    <div class="footer">
-      <slot name="footer"></slot>
-    </div>
-    <div class="copyright">
-      <slot name="copyright"></slot>
-    </div>
-    <div class="author">
-      <slot name="author"></slot>
-    </div>
-    <div class="license">
-      <slot name="license"></slot>
-    </div>
-    <div class="version">
-      <slot name="version"></slot>
-    </div>
-  </div>
+  </el-card>
 </template>
 
-<script setup></script>
+<script setup>
+import { computed, useSlots } from 'vue'
+import { User, Document, Ticket } from '@element-plus/icons-vue'
 
-<style scoped>
-div.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+const slots = useSlots()
 
-div.title {
-  font-size: xx-large;
-  font-weight: bold;
-  color: #2a2a2a;
-}
+// 检查插槽是否有内容
+const hasSlot = (name) => !!slots[name]
 
-div.content {
-  font-size: large;
-  color: #5a5959;
-  margin: 0 20px 20px 20px;
-  white-space: pre-line;
-  text-align: left;
-  max-width: 70%;
-  line-height: 1.5;
-}
+// 检查是否有其他元数据插槽
+const hasOtherSlots = computed(
+  () =>
+    hasSlot('copyright') ||
+    hasSlot('author') ||
+    hasSlot('license') ||
+    hasSlot('version')
+)
+</script>
 
-div.action {
-  display: grid;
-  grid-template-columns: 1fr;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  transition: transform 0.2s ease-in-out;
-  cursor: pointer;
-  max-width: 0px;
-  max-height: 40px;
-}
+<style lang="scss" scoped>
+.detail-card {
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+  margin-bottom: 1.5rem;
 
-div.action:hover {
-  transform: scale(1.03);
-  transition-duration: 0.3s;
-}
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
 
-div.footer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  color: #767676;
-  font-size: 12px;
+  .card-content {
+    padding: 1.5rem;
+
+    .title-section {
+      margin-bottom: 1.2rem;
+      .title {
+        color: var(--el-color-primary);
+        border-left: 4px solid var(--el-color-primary);
+        padding-left: 0.8rem;
+      }
+    }
+
+    .content-section {
+      margin-bottom: 1.5rem;
+      .content {
+        color: var(--el-text-color-regular);
+        line-height: 1.7;
+        font-size: 1rem;
+        white-space: pre-line;
+      }
+    }
+
+    .action-section {
+      margin-bottom: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      transition: all 0.3s ease;
+
+      :deep(.el-button) {
+        transition: transform 0.2s ease;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+
+    .footer-section {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--el-border-color-light);
+      color: var(--el-text-color-secondary);
+      font-size: 0.9rem;
+    }
+
+    .meta-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 1.5rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid var(--el-border-color-lighter);
+
+      .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--el-text-color-secondary);
+        font-size: 0.85rem;
+
+        .el-icon {
+          color: var(--el-color-info);
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .card-content {
+      padding: 1rem;
+
+      .meta-section {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
 }
 </style>

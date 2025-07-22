@@ -1,7 +1,7 @@
 import js from '@eslint/js'
 import pluginVue from 'eslint-plugin-vue'
 import globals from 'globals'
-import prettierConfig from 'eslint-config-prettier' 
+import prettierConfig from 'eslint-config-prettier'
 
 export default [
   {
@@ -18,6 +18,7 @@ export default [
     languageOptions: {
       globals: {
         ...globals.browser,
+        ElMessage: "readonly",
       },
     },
   },

@@ -11,7 +11,7 @@
 <script setup></script>
 
 <style scoped>
-h1.title {
+.title {
   display: flex;
   justify-content: center;
   align-items: center;
