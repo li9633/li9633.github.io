@@ -37,9 +37,9 @@ export default defineConfig({
       scss: {
         api: 'modern-compiler',
         additionalData: `
-      @use "@/assets/scss/mixins.scss" as *;
-      @use "@/assets/scss/variables.scss" as *;
-      @use "@/assets/scss/backgrounds.scss" as *;
+        @use "@/assets/scss/variables.scss" as *;
+        @use "@/assets/scss/mixins.scss" as *;
+        @use "@/assets/scss/backgrounds.scss" as *;
         `
       }
     }

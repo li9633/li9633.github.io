@@ -1,13 +1,231 @@
-:root {
-  --page-max-width: 1200px;
-  --card-radius: 12px;
-  --transition-duration: 0.3s;
+// 全局 SCSS 变量文件
 
-  // 布局变量
-  $content-padding: 2rem;
-  $mobile-padding: 1rem;
-  $content-bg: rgba(255, 255, 255, 0.92);
-  $content-radius: 15px;
-  $content-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
-  $max-content-width: 1200px;
-}
+// ========================================
+// 基础设置
+// ========================================
+$page-max-width: 1200px;
+$transition-duration: 0.3s;
+$transition-function: ease-in-out;
+
+// ========================================
+// 布局变量
+// ========================================
+$content-padding: 2rem;
+$mobile-padding: 1rem;
+$content-bg: rgba(255, 255, 255, 0.92);
+$content-radius: 15px;
+$content-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+$max-content-width: 1200px;
+$card-radius: 12px;
+
+// ========================================
+// 颜色变量
+// ========================================
+// 基础颜色
+$color-white: #ffffff;
+$color-black: #000000;
+$color-gray-50: #f9f9f9;
+$color-gray-100: #f0f0f0;
+$color-gray-200: #e0e0e0;
+$color-gray-300: #cccccc;
+$color-gray-400: #bbbbbb;
+$color-gray-500: #999999;
+$color-gray-600: #777777;
+$color-gray-700: #555555;
+$color-gray-800: #333333;
+$color-gray-900: #111111;
+
+// 主题颜色
+$color-primary: #007bff;
+$color-secondary: #6c757d;
+$color-success: #28a745;
+$color-danger: #dc3545;
+$color-warning: #ffc107;
+$color-info: #17a2b8;
+$color-light: #f8f9fa;
+$color-dark: #343a40;
+
+// 背景和边框
+$color-background: rgba(255, 255, 255, 0.92);
+$color-shadow: rgba(0, 0, 0, 0.1);
+
+// ========================================
+// 字体系统
+// ========================================
+$font-family-base:
+  -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+  'Helvetica Neue', Arial, sans-serif;
+$font-family-heading: 'Helvetica Neue', Arial, sans-serif;
+$font-family-mono:
+  'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+
+// 字体大小
+$font-size-xs: 0.75rem; // 12px
+$font-size-sm: 0.875rem; // 14px
+$font-size-base: 1rem; // 16px
+$font-size-md: 1.125rem; // 18px
+$font-size-lg: 1.25rem; // 20px
+$font-size-xl: 1.5rem; // 24px
+$font-size-xxl: 2rem; // 32px
+$font-size-xxxl: 2.5rem; // 40px
+
+// 字体粗细
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// 行高
+$line-height-base: 1.5;
+$line-height-heading: 1.2;
+$line-height-tight: 1.25;
+$line-height-loose: 1.75;
+
+// ========================================
+// 间距系统
+// ========================================
+$spacing-xxs: 0.25rem; // 4px
+$spacing-xs: 0.5rem; // 8px
+$spacing-sm: 1rem; // 16px
+$spacing-md: 1.5rem; // 24px
+$spacing-lg: 2rem; // 32px
+$spacing-xl: 3rem; // 48px
+$spacing-xxl: 4rem; // 64px
+$spacing-xxxl: 5rem; // 80px
+
+// ========================================
+// 边框
+// ========================================
+$border-width: 1px;
+$border-style: solid;
+$border-color: $color-gray-300;
+$border-radius-sm: 4px;
+$border-radius-base: 8px;
+$border-radius-lg: 12px;
+$border-radius-xl: 16px;
+$border-radius-pill: 50rem;
+
+// ========================================
+// 阴影
+// ========================================
+$box-shadow-sm:
+  0 1px 3px rgba(0, 0, 0, 0.12),
+  0 1px 2px rgba(0, 0, 0, 0.24);
+$box-shadow:
+  0 3px 6px rgba(0, 0, 0, 0.16),
+  0 3px 6px rgba(0, 0, 0, 0.23);
+$box-shadow-lg:
+  0 10px 20px rgba(0, 0, 0, 0.19),
+  0 6px 6px rgba(0, 0, 0, 0.23);
+$box-shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+
+// ========================================
+// Z-index 层级
+// ========================================
+$z-index-dropdown: 1000;
+$z-index-sticky: 1020;
+$z-index-fixed: 1030;
+$z-index-modal-backdrop: 1040;
+$z-index-modal: 1050;
+$z-index-popover: 1060;
+$z-index-tooltip: 1070;
+
+// ========================================
+// 动画
+// ========================================
+$animation-duration-fast: 0.15s;
+$animation-duration-base: 0.3s;
+$animation-duration-slow: 0.5s;
+$animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+// ========================================
+// 按钮
+// ========================================
+$btn-padding-y: 0.5rem;
+$btn-padding-x: 1rem;
+$btn-font-size: $font-size-base;
+$btn-border-radius: $border-radius-base;
+$btn-transition: all $animation-duration-base
+  $animation-timing-function;
+
+// ========================================
+// 表单
+// ========================================
+$form-input-padding-y: 0.5rem;
+$form-input-padding-x: 0.75rem;
+$form-input-font-size: $font-size-base;
+$form-input-line-height: $line-height-base;
+$form-input-bg: $color-white;
+$form-input-border-color: $border-color;
+$form-input-border-radius: $border-radius-base;
+$form-input-focus-border-color: $color-primary;
+$form-input-focus-shadow: 0 0 0 0.2rem rgba($color-primary, 0.25);
+
+// ========================================
+// 渐变色
+// ========================================
+$gradient-primary: linear-gradient(135deg, #007bff 0%, #00ffcc 100%);
+$gradient-secondary: linear-gradient(
+  135deg,
+  #6c757d 0%,
+  #adb5bd 100%
+);
+$gradient-success: linear-gradient(135deg, #28a745 0%, #90ee90 100%);
+$gradient-danger: linear-gradient(135deg, #dc3545 0%, #ff6b6b 100%);
+$gradient-warning: linear-gradient(135deg, #ffc107 0%, #ffd166 100%);
+$gradient-info: linear-gradient(135deg, #17a2b8 0%, #66d9e8 100%);
+$gradient-purple: linear-gradient(135deg, #6f42c1 0%, #a47deb 100%);
+$gradient-pink: linear-gradient(135deg, #e83e8c 0%, #ff7bac 100%);
+$gradient-blue: linear-gradient(135deg, #007bff 0%, #3a86ff 100%);
+$gradient-teal: linear-gradient(135deg, #20c997 0%, #64dfdf 100%);
+$gradient-orange: linear-gradient(135deg, #fd7e14 0%, #ffa726 100%);
+$gradient-indigo: linear-gradient(135deg, #6610f2 0%, #7467ef 100%);
+
+// 径向渐变
+$radial-gradient-primary: radial-gradient(
+  circle,
+  #007bff 0%,
+  #0056b3 100%
+);
+$radial-gradient-success: radial-gradient(
+  circle,
+  #28a745 0%,
+  #1e7e34 100%
+);
+$radial-gradient-danger: radial-gradient(
+  circle,
+  #dc3545 0%,
+  #bd2130 100%
+);
+$radial-gradient-warning: radial-gradient(
+  circle,
+  #ffc107 0%,
+  #e0a800 100%
+);
+$radial-gradient-info: radial-gradient(
+  circle,
+  #17a2b8 0%,
+  #117a8b 100%
+);
+
+// 多色渐变
+$gradient-rainbow: linear-gradient(
+  90deg,
+  #ff0000,
+  #ff8000,
+  #ffff00,
+  #80ff00,
+  #00ff00,
+  #00ff80,
+  #00ffff,
+  #0080ff,
+  #0000ff,
+  #8000ff,
+  #ff00ff,
+  #ff0080
+);
+$gradient-sunset: linear-gradient(135deg, #ff416c, #ff4b2b);
+$gradient-ocean: linear-gradient(135deg, #2193b0, #6dd5ed);
+$gradient-mint: linear-gradient(135deg, #00b09b, #96c93d);
+$gradient-lavender: linear-gradient(135deg, #7f00ff, #e100ff);

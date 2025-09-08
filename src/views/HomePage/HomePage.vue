@@ -21,70 +21,21 @@
         <el-text class="intro-text">{{ introduce }}</el-text>
       </template>
       <template #footer>
-        <el-text size="small">最后更新: 2025年7月21日</el-text>
+        <el-text size="small">最后更新: 2025年9月8日</el-text>
       </template>
     </DetailContext>
 
     <!-- 项目列表区域 -->
-    <div class="project-grid">
-      <el-card
-        v-for="(item, index) in itemList"
-        :key="index"
-        class="project-card"
-        shadow="hover"
-      >
-        <div class="project-header">
-          <el-text class="project-name" tag="b">{{
-            item.name
-          }}</el-text>
-          <div class="project-links">
-            <el-link
-              v-if="item.url"
-              :href="item.url"
-              target="_blank"
-              type="primary"
-            >
-              <el-icon><Link /></el-icon>
-              <span> GitHub </span>
-            </el-link>
-            <el-link
-              v-if="item.issue"
-              :href="item.issue"
-              target="_blank"
-              type="warning"
-            >
-              <el-icon><Warning /></el-icon>
-              <span>Issues </span>
-            </el-link>
-            <el-link
-              v-if="item.release"
-              :href="item.release"
-              target="_blank"
-              type="success"
-            >
-              <el-icon><Download /></el-icon>
-              <span> Releases </span>
-            </el-link>
-          </div>
-        </div>
-
-        <el-divider />
-
-        <div class="project-desc">
-          <el-text class="desc-en">{{ item.descEN }}</el-text>
-          <el-text class="desc-cn">{{ item.descCN }}</el-text>
-        </div>
-      </el-card>
-    </div>
+    <ProjectList :projects="itemList" />
   </PageContainer>
 </template>
 
 <script setup>
 import { computed } from 'vue'
-import { Link, Download, Warning } from '@element-plus/icons-vue'
 import HeaderTitle from '@/components/Header/HeaderTitle.vue'
 import DetailContext from '@/components/MiddleContents/DetailContext.vue'
 import PageContainer from '@/components/Layout/PageContainer.vue'
+import ProjectList from '@/components/Project/ProjectList.vue'
 
 const introduce =
   '欢迎来到我的个人博客。如果在使用中出现了问题，请进入仓库提交issue进行反馈。'
@@ -118,13 +69,6 @@ const itemList = [
     issue: 'https://github.com/li9633/DisableLGhubAutoUpdate/issues',
     release:
       'https://github.com/li9633/DisableLGhubAutoUpdate/releases'
-  },
-  {
-    icon: null,
-    name: 'SampleRepository',
-    descEN: 'This is a sample repository',
-    descCN: '这是一个示例仓库',
-    url: null
   }
 ]
 
@@ -149,98 +93,5 @@ const getCurrentURL = () => {
 .header-section {
   text-align: center;
   margin-bottom: 2rem;
-}
-
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  margin-top: 1.5rem;
-
-  .project-card {
-    @include card-hover-effect;
-    height: 100%;
-    border-radius: 10px;
-
-    .project-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      .project-name {
-        font-size: 1.2rem;
-        color: var(--el-text-color-primary);
-        max-width: 60%;
-      }
-
-      .project-links {
-        display: flex;
-        gap: 8px;
-        flex-wrap: wrap;
-        justify-content: flex-end;
-
-        .el-link {
-          .el-icon {
-            font-size: 1rem;
-            line-height: 1;
-            margin-right: 3px;
-          }
-
-          // 新增：文本节点特殊处理
-          > :not(.el-icon) {
-            line-height: 1.2;
-            vertical-align: middle;
-          }
-        }
-      }
-    }
-
-    .project-desc {
-      margin-top: 1rem;
-
-      .desc-en,
-      .desc-cn {
-        display: block;
-        margin-bottom: 0.5rem;
-        line-height: 1.5;
-      }
-
-      .desc-en {
-        color: var(--el-text-color-secondary);
-        font-style: italic;
-      }
-
-      .desc-cn {
-        color: var(--el-text-color-primary);
-      }
-    }
-  }
-}
-
-@media (max-width: 992px) {
-  .project-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 768px) {
-  .project-grid {
-    .project-card {
-      .project-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-
-        .project-name {
-          max-width: 100%;
-        }
-
-        .project-links {
-          width: 100%;
-          justify-content: flex-start;
-        }
-      }
-    }
-  }
 }
 </style>

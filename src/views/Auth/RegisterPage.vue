@@ -122,7 +122,6 @@ const register = async () => {
     ElMessage.success(response.msg)
     router.push('/login')
   } catch (error) {
-    // 验证失败不处理
     console.error(error)
   } finally {
     loading.value = false

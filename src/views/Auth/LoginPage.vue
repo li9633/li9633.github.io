@@ -108,7 +108,7 @@ const login = async () => {
     ElMessage.success(response.msg)
     router.push('/')
   } catch (error) {
-    ElMessage.error(`登录失败: ${error.message || '未知错误'}`)
+    console.error(error)
   } finally {
     loading.value = false
   }

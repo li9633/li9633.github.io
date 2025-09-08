@@ -3,6 +3,7 @@
     <!-- 左侧返回首页 -->
     <div class="left-area" @click="goHomePage">
       <el-image :src="homeIcon" fit="contain" class="home-icon" />
+      <span class="home-title">昕屿千行</span>
     </div>
 
     <!-- 中间标题 -->
@@ -20,6 +21,7 @@
           :href="item.url"
           underline="never"
           class="action-item"
+          :class="{ active: isActiveRoute(item.url) }"
         >
           <!-- 修复图标使用方式 -->
           <img
@@ -52,33 +54,68 @@ defineProps({
 
 const getPageMetaTitle = computed(() => route.meta.title || '')
 const goHomePage = () => router.push('/')
+
+// 判断当前路由是否激活
+const isActiveRoute = (url) => {
+  if (!url) return false
+  return route.path === url
+}
 </script>
 
 <style lang="scss" scoped>
 .header-bar {
-  @include flex-center;
-  background: linear-gradient(135deg, #74c2f9 0%, #63ce8f 100%);
-  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.25);
-  height: 3rem;
-  color: white;
-  padding: 0 1rem;
+  @include flex-center-y;
+  @include theme-gradient(
+    135deg,
+    rgba($color-primary, 0.95),
+    rgba($color-secondary, 0.95)
+  );
+  @include box-shadow(0 4px 20px rgba($color-black, 0.15));
+  height: 4rem;
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: $z-index-fixed;
+  backdrop-filter: blur(10px);
+  @include border-radius(0);
+  position: relative;
 
   // 公共区域样式
   .left-area,
   .title-area,
   .action-area {
-    @include flex-center;
+    @include flex-center-y;
     height: 100%;
   }
 
   // 左侧区域
   .left-area {
-    width: 60px;
     cursor: pointer;
+    @include transition(
+      all,
+      $animation-duration-base,
+      $transition-function
+    );
+    @include border-radius(30px);
+    padding: $spacing-xs;
+    flex-shrink: 0;
+
+    .home-title {
+      font-size: $font-size-lg;
+      color: $color-white;
+      font-weight: $font-weight-semibold;
+      text-shadow: 0 2px 4px rgba($color-black, 0.2);
+    }
+
     .home-icon {
-      width: 32px;
-      height: 32px;
-      transition: transform 0.3s ease;
+      @include square(40px);
+      @include transition(
+        transform,
+        $animation-duration-base,
+        $transition-function
+      );
+      margin-right: $spacing-xs;
+
       &:hover {
         transform: scale(1.15);
       }
@@ -87,36 +124,60 @@ const goHomePage = () => router.push('/')
 
   // 中间标题
   .title-area {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    flex: 1;
+    justify-content: center;
+    position: relative;
+    min-width: 0;
+
     .title-text {
-      font-size: 1.25rem;
-      white-space: nowrap;
-      color: white;
+      font-size: $font-size-xl;
+      color: $color-white;
+      font-weight: $font-weight-semibold;
+      text-shadow: 0 2px 4px rgba($color-black, 0.2);
+      @include text-ellipsis;
     }
   }
 
   // 右侧操作区
   .action-area {
-    margin-left: auto;
-    gap: 12px;
+    gap: $spacing-xs;
+    flex-shrink: 0;
+
     .action-item {
-      @include flex-center;
-      color: white !important;
-      transition: transform 0.2s ease;
-      &:hover {
-        transform: scale(1.15);
-        .action-icon {
-          color: var(--el-color-primary-light-3);
-        }
+      @include flex-center-y;
+      padding: 0.6rem 1.2rem;
+      @include border-radius(25px);
+      @include transition(
+        all,
+        $animation-duration-base,
+        $transition-function
+      );
+      color: rgba($color-white, 0.9) !important;
+      font-weight: $font-weight-medium;
+      background: rgba($color-white, 0.15);
+      backdrop-filter: blur(5px);
+      white-space: nowrap;
+
+      &.active {
+        background: rgba($color-white, 0.3);
+        @include box-shadow(0 4px 12px rgba($color-black, 0.2));
+        color: $color-white !important;
+        font-weight: $font-weight-semibold;
       }
-      .action-icon {
-        margin-right: 4px;
-        font-size: 1.2rem;
+
+      &:hover:not(.active) {
+        background: rgba($color-white, 0.25);
+        transform: translateY(-2px);
+        color: $color-white !important;
       }
+
+      .action-icon-img {
+        @include square(18px);
+        margin-right: 8px;
+      }
+
       .action-title {
-        font-size: 0.9rem;
+        font-size: $font-size-base;
       }
     }
   }
