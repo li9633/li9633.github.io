@@ -1,1 +1,0 @@
-import{_ as a,c as n,am as o,o as t}from"./index-CspVYnNq.js";const s={},c={class:"page-container"};function r(e,_){return t(),n("div",c,[o(e.$slots,"default",{},void 0,!0)])}const f=a(s,[["render",r],["__scopeId","data-v-a385fa1f"]]);export{f as P};

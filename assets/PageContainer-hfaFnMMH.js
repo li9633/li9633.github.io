@@ -1,0 +1,1 @@
+import{_ as a,c as n,o,ag as t}from"./index-DTtwFklr.js";const s={},c={class:"page-container"};function r(e,_){return o(),n("div",c,[t(e.$slots,"default",{},void 0,!0)])}const f=a(s,[["render",r],["__scopeId","data-v-a385fa1f"]]);export{f as P};

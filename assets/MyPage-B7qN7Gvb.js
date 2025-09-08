@@ -1,0 +1,1 @@
+import{H as t}from"./HeaderTitle-nG-w4FVS.js";import{c as a,o as r,b as o,w as s,e as n}from"./index-DTtwFklr.js";const c={class:"container"},p={__name:"MyPage",setup(i){return(_,e)=>(r(),a("div",c,[o(t,null,{primary:s(()=>[...e[0]||(e[0]=[n(" 个人中心 ",-1)])]),_:1})]))}};export{p as default};
