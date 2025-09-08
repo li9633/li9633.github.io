@@ -1,5 +1,392 @@
+// ========================================
+// 响应式断点变量
+// ========================================
+$breakpoint-xs: 480px;
+$breakpoint-sm: 768px;
+$breakpoint-md: 1024px;
+$breakpoint-lg: 1200px;
+$breakpoint-xl: 1440px;
+
+// ========================================
+// 布局混入 (Layout Mixins)
+// ========================================
+
+// Flexbox 居中
 @mixin flex-center {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+// Flexbox 垂直居中
+@mixin flex-center-y {
+  display: flex;
+  align-items: center;
+}
+
+// Flexbox 水平居中
+@mixin flex-center-x {
+  display: flex;
+  justify-content: center;
+}
+
+// Flexbox 列布局
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// Flexbox 列布局并居中
+@mixin flex-column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+// Flexbox 间距
+@mixin flex-gap($gap) {
+  display: flex;
+  gap: $gap;
+}
+
+// Grid 布局
+@mixin grid($columns, $gap: 1rem) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $gap;
+}
+
+// Grid 响应式布局
+@mixin grid-responsive(
+  $columns-desktop,
+  $columns-tablet: 2,
+  $columns-mobile: 1,
+  $gap: 1rem
+) {
+  display: grid;
+  gap: $gap;
+
+  @media (min-width: $breakpoint-lg) {
+    grid-template-columns: repeat($columns-desktop, 1fr);
+  }
+
+  @media (min-width: $breakpoint-sm) and (max-width: ($breakpoint-lg - 1px)) {
+    grid-template-columns: repeat($columns-tablet, 1fr);
+  }
+
+  @media (max-width: ($breakpoint-sm - 1px)) {
+    grid-template-columns: repeat($columns-mobile, 1fr);
+  }
+}
+
+// 绝对定位居中
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// 绝对定位垂直居中
+@mixin absolute-center-y {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+// 绝对定位水平居中
+@mixin absolute-center-x {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+// 固定定位覆盖全屏
+@mixin fixed-fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+// ========================================
+// 尺寸混入 (Sizing Mixins)
+// ========================================
+
+// 正方形
+@mixin square($size) {
+  width: $size;
+  height: $size;
+}
+
+// 圆形
+@mixin circle($size) {
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+}
+
+// 宽高比容器
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    display: block;
+    content: '';
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+
+  > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+// ========================================
+// 文本混入 (Typography Mixins)
+// ========================================
+
+// 文本省略
+@mixin text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// 多行文本省略
+@mixin text-ellipsis-lines($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// 文本隐藏
+@mixin text-hide {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+// 文本选择样式
+@mixin text-select($color) {
+  &::selection {
+    background-color: $color;
+  }
+}
+
+// ========================================
+// 背景混入 (Background Mixins)
+// ========================================
+
+// 背景图片
+@mixin bg-image($url) {
+  background-image: url($url);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+// 渐变背景
+@mixin bg-gradient($gradient) {
+  background: $gradient;
+  background-repeat: no-repeat;
+}
+
+// ========================================
+// 边框和阴影混入 (Border & Shadow Mixins)
+// ========================================
+
+// 边框
+@mixin border($width: 1px, $style: solid, $color: #cccccc) {
+  border: $width $style $color;
+}
+
+// 单边框
+@mixin border-top($width: 1px, $style: solid, $color: #cccccc) {
+  border-top: $width $style $color;
+}
+
+@mixin border-right($width: 1px, $style: solid, $color: #cccccc) {
+  border-right: $width $style $color;
+}
+
+@mixin border-bottom($width: 1px, $style: solid, $color: #cccccc) {
+  border-bottom: $width $style $color;
+}
+
+@mixin border-left($width: 1px, $style: solid, $color: #cccccc) {
+  border-left: $width $style $color;
+}
+
+// 圆角
+@mixin border-radius($radius: 8px) {
+  border-radius: $radius;
+}
+
+// 盒子阴影
+@mixin box-shadow($shadows...) {
+  box-shadow: $shadows;
+}
+
+// ========================================
+// 动画混入 (Animation Mixins)
+// ========================================
+
+// 过渡动画
+@mixin transition(
+  $property: all,
+  $duration: 0.3s,
+  $function: ease-in-out
+) {
+  transition: $property $duration $function;
+}
+
+// 关键帧动画
+@mixin keyframes($name) {
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+// 动画
+@mixin animation(
+  $name,
+  $duration: 0.3s,
+  $timing: cubic-bezier(0.4, 0, 0.2, 1),
+  $iteration: infinite
+) {
+  animation: $name $duration $timing $iteration;
+}
+
+// ========================================
+// 响应式混入 (Responsive Mixins)
+// ========================================
+
+// 媒体查询 - 手机
+@mixin mobile {
+  @media (max-width: ($breakpoint-sm - 1px)) {
+    @content;
+  }
+}
+
+// 媒体查询 - 平板
+@mixin tablet {
+  @media (min-width: $breakpoint-sm) and (max-width: ($breakpoint-md - 1px)) {
+    @content;
+  }
+}
+
+// 媒体查询 - 桌面
+@mixin desktop {
+  @media (min-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+// 媒体查询 - 大屏幕
+@mixin large-desktop {
+  @media (min-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+// 自定义媒体查询
+@mixin media($breakpoint) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+// ========================================
+// 其他实用混入 (Utility Mixins)
+// ========================================
+
+// 清除浮动
+@mixin clearfix {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+// 隐藏元素
+@mixin hidden {
+  display: none !important;
+}
+
+// 可视化隐藏（但仍可被屏幕阅读器访问）
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// 滚动条样式
+@mixin scrollbar($size: 6px, $color: #cccccc, $bg: transparent) {
+  &::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $bg;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $color;
+    border-radius: $size / 2;
+  }
+}
+
+// 三角形
+@mixin triangle($direction, $size, $color) {
+  width: 0;
+  height: 0;
+  border-style: solid;
+
+  @if $direction == up {
+    border-width: 0 $size $size $size;
+    border-color: transparent transparent $color transparent;
+  } @else if $direction == right {
+    border-width: $size 0 $size $size;
+    border-color: transparent transparent transparent $color;
+  } @else if $direction == down {
+    border-width: $size $size 0 $size;
+    border-color: $color transparent transparent transparent;
+  } @else if $direction == left {
+    border-width: $size $size $size 0;
+    border-color: transparent $color transparent transparent;
+  }
+}
+
+// 毛玻璃效果
+@mixin glass-effect($bg-color: rgba(255, 255, 255, 0.25)) {
+  background: $bg-color;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+// 占位符样式
+@mixin placeholder {
+  &::placeholder {
+    @content;
+  }
 }
